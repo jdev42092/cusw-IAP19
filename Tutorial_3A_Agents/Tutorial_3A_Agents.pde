@@ -62,14 +62,14 @@ void setup() {
   /* Step 1: Initialize Network Using ONLY ONE of these methods */
   //randomNetwork(0.5); // a number between 0.0 and 1.0 specifies how 'porous' the network is
   //waysNetwork(ways);
-  //randomNetworkMinusBuildings(0.1, polygons); // a number between 0.0 and 1.0 specifies how 'porous' the network is
+  randomNetworkMinusBuildings(0.1, polygons); // a number between 0.0 and 1.0 specifies how 'porous' the network is
   
   /* Step 2: Initialize Paths Using ONLY ONE of these methods */
   //randomPaths();
-  //poiPaths();
+  poiPaths();
   
   /* Step 3: Initialize Paths Using ONLY ONE of these methods */
-  //initPopulation(1000);
+  initPopulation(1000);
   //initPopulation(500);
   
 }
@@ -79,11 +79,11 @@ void draw() {
   
   /* background image from OSM */
   image(background, 0, 0);
-  drawGISObjects();
+  //drawGISObjects();
   
   /*  Displays the Graph in grayscale */
-  //tint(255, 75); // overlaid as an image
-  //image(network.img, 0, 0);
+  tint(255, 75); // overlaid as an image
+  image(network.img, 0, 0);
   
   /*  Displays the path last calculated in Pathfinder.
    *  The results are overridden everytime findPath() is run.
@@ -95,25 +95,25 @@ void draw() {
   /*  Displays the path properties.
    *  FORMAT: display(color, alpha)
    */
-  //for (Path p: paths) {
-  //  p.display(100, 50);
-  //}
+  for (Path p: paths) {
+    p.display(100, 50);
+  }
   
   /*  Update and Display the population of agents
    *  FORMAT: display(color, alpha)
    */
-  //boolean collisionDetection = true;
-  //for (Agent p: people) {
-  //  p.update(personLocations(people), collisionDetection);
-  //  p.display(#FFFF00, 150);
-  //}
+  boolean collisionDetection = true;
+  for (Agent p: people) {
+    p.update(personLocations(people), collisionDetection);
+    p.display(#FFFF00, 150);
+  }
   
 }
 
 void keyPressed() {
   
   //randomPaths();
-  //poiPaths();
-  //initPopulation(1000);
+  poiPaths();
+  initPopulation(1000);
   
 }
